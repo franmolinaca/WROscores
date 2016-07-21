@@ -1,0 +1,55 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{tablea.name}}">
+  <ion-content class="padding">
+    <div>
+      <div class="card responsive-card">
+        <h2 class="title">Ingrese el resultado</h2>
+      </div>
+      <div class="card responsive-card">
+        <ion-item>
+          <ion-label>Equipo</ion-label>
+          <ion-select [(ngModel)]="team">
+            <ion-option>JAJA</ion-option>
+            <ion-option>JEJE</ion-option>
+          </ion-select>
+          <ion-label>Ronda</ion-label>
+          <ion-select [(ngModel)]="team">
+            <ion-option>JAJA</ion-option>
+            <ion-option>JEJE</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Cubos rojos al final</ion-label>
+          <ion-select [(ngModel)]="reds">
+            <ion-option>1</ion-option>
+            <ion-option>2</ion-option>
+            <ion-option>3</ion-option>
+            <ion-option>4</ion-option>
+          </ion-select>
+          <ion-label>Cubos azules en el circulo</ion-label>
+          <ion-select [(ngModel)]="blues">
+            <ion-option>1</ion-option>
+            <ion-option>2</ion-option>
+            <ion-option>3</ion-option>
+            <ion-option>4</ion-option>
+          </ion-select>
+          <ion-label>Mision completada</ion-label>
+          <ion-select [(ngModel)]="comp">
+            <ion-option>Si</ion-option>
+            <ion-option>No</ion-option>
+          </ion-select>
+          <ion-label>Finaliza en área roja</ion-label>
+          <ion-select [(ngModel)]="red">
+            <ion-option>Si</ion-option>
+            <ion-option>No</ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

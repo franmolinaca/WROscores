@@ -1,0 +1,11 @@
+<ion-view view-title="Elija Mesa">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="tablea in tablesa" type="item-text-wrap" href="#/tab/category/tables/{{tablea.id}}">
+        <img ng-src="{{tablea.face}}">
+        <h2>{{tablea.name}}</h2>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

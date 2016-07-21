@@ -1,0 +1,118 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{tablea.name}}">
+  <ion-content class="padding">
+    <div>
+      <div class="card responsive-card">
+        <h2 class="title">Elija el equipo</h2>
+      </div>
+      <div class="card responsive-card">
+      <label class = "item item-input item-select">
+        <div class = "input-label">
+            Equipo
+          </div>
+          <select ng-model="team">
+            <option>JAJA</option>
+            <option>JEJE</option>
+            <option>Los dinosaurios</option>
+          </select>
+      </label>
+      <label class = "item item-input item-select">
+        <div class = "input-label">
+            Ronda
+          </div>
+          <select ng-model="round">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
+      </label>
+
+
+
+      <div class="card responsive-card">
+        <h2 class="title">Ingrese el resultado</h2>
+      </div>
+
+      <label class = "item item-input item-select">
+        <div class = "input-label">
+            Cubos rojos quitados del círculo
+          </div>
+          <select ng-model="redsout">
+            <option ng-selected="true">0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+      </label>
+
+      <label class = "item item-input item-select">
+        <div class = "input-label">
+            Cubos azules en el círculo donde había un cubo rojo
+          </div>
+          <select ng-model="blues">
+            <option ng-selected="true">0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+      </label>
+
+      <label class = "item item-input item-select" >
+        <div class = "input-label">
+            Cubos rojos en área de desecho, sin cubos azules
+          </div>
+          <select ng-model="redsin">
+            <option ng-selected="true">0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+      </label>
+
+      <label class = "item item-input item-select">
+        <div class = "input-label">
+            Finaliza en área roja
+          </div>
+          <select ng-model="area">
+            <option>Si</option>
+            <option ng-selected="true">No</option>
+          </select>
+      </label>
+
+      <label class = "item item-input item-select">
+        <div class = "input-label">
+            Mision completada(7 azules, 4 rojos y robot en área roja)
+          </div>
+          <select ng-model="comp">
+            <option>Si</option>
+            <option ng-selected="true">No</option>
+          </select>
+      </label>
+
+      <label class = "item item-input item-select">
+        <div class = "input-label">
+          Barreras derribadas
+          </div>
+          <select ng-model="barr">
+            <option ng-selected="true">0</option>
+            <option>1</option>
+            <option>2</option>
+          </select>
+      </label>
+
+
+      </div>
+    </div>
+    <div class="card responsive-card">
+      <h2 class="title">Puntaje de ronda:</h2>
+    </div>
+  </ion-content>
+</ion-view>
