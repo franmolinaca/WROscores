@@ -1,9 +1,9 @@
 <ion-view view-title="Elija Mesa">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="tablea in tablesa" type="item-text-wrap" href="#/tab/category/tables/{{tablea.id}}">
-        <img ng-src="{{tablea.face}}">
-        <h2>{{tablea.name}}</h2>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="table in tables" type="item-text-wrap" href="#/tab/category/{{lastcat}}/{{table.id}}">
+        <img ng-src="{{table.face}}">
+        <h2>{{table.name}}</h2>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>

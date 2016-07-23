@@ -4,7 +4,7 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{tablea.name}}">
+<ion-view view-title="{{mesa}}">
   <ion-content class="padding">
     <div>
       <div class="card responsive-card">
@@ -15,17 +15,15 @@
         <div class = "input-label">
             Equipo
           </div>
-          <select ng-model="team">
-            <option>JAJA</option>
-            <option>JEJE</option>
-            <option>Los dinosaurios</option>
+          <select ng-model="$parent.selecteam" ng-change="update1()">
+            <option ng-repeat="option in teams" value="{{option.name}}">{{option.name}}</option>
           </select>
       </label>
       <label class = "item item-input item-select">
         <div class = "input-label">
             Ronda
           </div>
-          <select ng-model="round">
+          <select ng-model="$parent.round" ng-change="update1()">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -42,7 +40,7 @@
         <div class = "input-label">
             Cubos rojos quitados del círculo
           </div>
-          <select ng-model="redsout">
+          <select ng-model="$parent.redsout" ng-change="update1()">
             <option ng-selected="true">0</option>
             <option>1</option>
             <option>2</option>
@@ -55,7 +53,7 @@
         <div class = "input-label">
             Cubos azules en el círculo donde había un cubo rojo
           </div>
-          <select ng-model="blues">
+          <select ng-model="$parent.blues" ng-change="update1()">
             <option ng-selected="true">0</option>
             <option>1</option>
             <option>2</option>
@@ -68,7 +66,7 @@
         <div class = "input-label">
             Cubos rojos en área de desecho, sin cubos azules
           </div>
-          <select ng-model="redsin">
+          <select ng-model="$parent.redsin" ng-change="update1()">
             <option ng-selected="true">0</option>
             <option>1</option>
             <option>2</option>
@@ -81,7 +79,7 @@
         <div class = "input-label">
             Finaliza en área roja
           </div>
-          <select ng-model="area">
+          <select ng-model="$parent.area" ng-change="update1()">
             <option>Si</option>
             <option ng-selected="true">No</option>
           </select>
@@ -91,7 +89,7 @@
         <div class = "input-label">
             Mision completada(7 azules, 4 rojos y robot en área roja)
           </div>
-          <select ng-model="comp">
+          <select ng-model="$parent.comp" ng-change="update1()">
             <option>Si</option>
             <option ng-selected="true">No</option>
           </select>
@@ -101,7 +99,7 @@
         <div class = "input-label">
           Barreras derribadas
           </div>
-          <select ng-model="barr">
+          <select ng-model="$parent.barr" ng-change="update1()">
             <option ng-selected="true">0</option>
             <option>1</option>
             <option>2</option>
@@ -112,7 +110,10 @@
       </div>
     </div>
     <div class="card responsive-card">
-      <h2 class="title">Puntaje de ronda:</h2>
+      <h2 class="title">Puntaje de ronda: {{total}}</h2>
     </div>
+    <button class="button button-block button-positive" ng-click="savescore()">
+      Guardar Puntaje
+    </button>
   </ion-content>
 </ion-view>

@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','firebase'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -51,7 +51,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
     .state('tab.table', {
-        url: '/category/tables',
+        url: '/category/:catname',
+        params: { catname: { dynamic: true } },
         views: {
           'tab-cat': {
             templateUrl: 'templates/tab-table.html',
@@ -60,7 +61,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
     })
     .state('tab.enter-detail', {
-      url: '/category/tables/:tableId',
+      url: '/category/:catname/:tableId',
+      params: { catname: { dynamic: true } },
+      params: { tableId: { dynamic: true } },
       views: {
         'tab-cat': {
           templateUrl: 'templates/enter-detail.html',

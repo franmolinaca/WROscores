@@ -1,40 +1,32 @@
-angular.module('starter.services', [])
+angular.module('starter.services', ["ionic", "firebase"])
 
 
-.factory('Cats', function() {
-  // Might use a resource here that returns a JSON array
-  // Some fake testing data
-  var cats = [{
-    id: 0,
-    name: 'Elementary',
-    face: 'img/reg.png'
-  }, {
-    id: 1,
-    name: 'Junior High',
-    face: 'img/reg.png'
-  }, {
-    id: 2,
-    name: 'Senior High',
-    face: 'img/reg.png'
-  }, {
-    id: 3,
-    name: 'Gen II Football',
-    face: 'img/gen2.png'
-  }, {
-    id: 4,
-    name: 'University',
-    face: 'img/univ.png'
-  }];
+//Categorie factory, gives a JSON with all the categories from firebase
+.factory('Cats', function($firebaseArray) {
 
+  var allin = new Firebase("https://wroscores-92a9c.firebaseio.com/Categories/");
+  var cats = [];
+
+    allin.on("value", function(snapshot) {
+      //saves the snapshot of the firebase
+    snapshot.forEach(function(childSnapshot) {
+      var key = childSnapshot.key();
+      //console.log("Cats:"+key);
+      // childData will be the actual contents of the child
+      cats.push(childSnapshot.val());
+      //push every child in the cats array with an id, this can be optimized
+    });
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+//factory returns the whole array or just one when called with get and an id
   return {
     all: function() {
       return cats;
     },
-    remove: function(cat) {
-      cats.splice(cats.indexOf(cat), 1);
-    },
+  //needed to know which category is accesed
     get: function(catId) {
-      for (var i = 0; i < chats.length; i++) {
+      for (var i = 0; i < cats.length; i++) {
         if (cats[i].id === parseInt(catId)) {
           return cats[i];
         }
@@ -44,40 +36,62 @@ angular.module('starter.services', [])
   };
 })
 
-.factory('Tablesa', function() {
+.factory('Tables', function($firebaseArray,$stateParams) {
   // Might use a resource here that returns a JSON array
-  // Some fake testing data
-  var tablesa = [{
-    id: 0,
-    name: 'Mesa 1',
-    face: 'img/reg.png'
-  }, {
-    id: 1,
-    name: 'Mesa 2',
-    face: 'img/reg.png'
-  }, {
-    id: 2,
-    name: 'Mesa 3',
-    face: 'img/reg.png'
-  }];
+  function getnew() {
+  var tables = [];
+  var allin1 = new Firebase("https://wroscores-92a9c.firebaseio.com/Categories/"+$stateParams.catname+"/Mesas/");
+    allin1.on("value", function(snapshot) {
+    //This is not used, just for reference and debug
+    snapshot.forEach(function(childSnapshot) {
+      // childData will be the actual contents of the child
+      tables.push(childSnapshot.val());
+      console.log("Snaps:"+childSnapshot.val().name);
+    });
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+  return tables; // convert to an object
+  }
 
   return {
     all: function() {
-      return tablesa;
-    },
-    remove: function(tablea) {
-      tablea.splice(tablea.indexOf(tablea), 1);
-    },
-    get: function(tableaId) {
-      for (var i = 0; i < tablesa.length; i++) {
-        if (tablesa[i].id === parseInt(tableaId)) {
-          return tablesa[i];
-        }
-      }
-      return null;
+      return getnew();
     }
   };
 })
+
+
+.factory('Teams', function($firebaseArray,$stateParams) {
+  // Might use a resource here that returns a JSON array
+  function getteams() {
+  var teams = [];
+  var allteams = new Firebase("https://wroscores-92a9c.firebaseio.com/Teams");
+    allteams.on("value", function(snapshot) {
+
+    snapshot.forEach(function(childSnapshot) {
+      // Check all teams of the firebase
+      console.log("Catx:"+childSnapshot.val().category);
+      console.log("CatStatex:"+$stateParams.catname);
+      //if child is on the category then add it to the local base
+      if(childSnapshot.val().category==$stateParams.catname&&childSnapshot.val().table==$stateParams.tableId){
+      teams.push(childSnapshot.val());
+      console.log("Teamx:"+childSnapshot.val().name);
+      }
+    });
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
+  return teams; // return the teams from the table of the category
+  }
+
+  return {
+    all: function() {
+      return getteams();
+    }
+  };
+})
+
 
 
 .factory('Chats', function() {
